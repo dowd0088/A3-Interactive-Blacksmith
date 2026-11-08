@@ -244,3 +244,68 @@ footer {
     margin: -1rem auto 1rem;
 }
 
+/* Forge styles */
+
+.control-button {
+    margin-bottom: 1.5rem;
+}
+
+.control-button label{
+    display: block;
+    font-weight: bold;
+    margin-bottom: .5rem;
+}
+
+.control-button button{
+    padding: .85rem 2rem;
+    border: 1px solid #bdc9c2;
+    border-radius: .25rem;
+    color:#ffffff;
+    background: #006341;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.control-button button:hover{
+    background: #004b31;
+}
+
+.control-button .main-button{
+    width: 100%;
+  
+}
+
+.control-button .reset-button{
+    width: 100%;
+    border: 3px solid #006341;
+    background: #ffffff;
+    color: #004b31;
+}
+.control-button .reset-button:hover{
+    background: #004b31;
+    color: #ffffff;
+}
+
+.control-button .note {
+    margin-top: .5rem;
+}
+
+.number-control {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+}
+
+.number-control input{
+    width: 90%;
+    padding: .5rem;
+    font-size: 1rem;
+    border: 1px solid #bdc9c2;
+    border-radius: .25rem;
+}
+
+.number-control input:focus{
+    outline: 2px solid #006341;
+    outline-offset: 2px;
+}
