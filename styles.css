@@ -309,3 +309,13 @@ footer {
     outline: 2px solid #006341;
     outline-offset: 2px;
 }
+
+/* Responsive Styles */
+@media (max-width: 450px) {
+    .control-number{
+        grid-template-columns: 1fr;
+    }
+    .number-control button{
+        width: 100%;
+    }
+}

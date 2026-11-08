@@ -18,6 +18,10 @@ const swordCountElement = document.getElementById('sword-count');
 const statusElement = document.getElementById('forge-status');
 const forgeImageElement = document.getElementById('forge-image');
 const actionMessageElement = document.getElementById('action-message');
+// A2 Interactive Consts
+const heatInputElement = document.getElementById('qty');
+const makeSwordButton = document.getElementById('make-sword');
+const resetForgeButton = document.getElementById('reset-forge');
 
 // 2. Create the two state variables: heat and swords made.
 
@@ -45,24 +49,24 @@ function updateForge() {
     heatElement.textContent = heat;
     swordCountElement.textContent = swordsMade;
 
-const status = getForgeStatus(heat);
-statusElement.textContent = status;
+    const status = getForgeStatus(heat);
+    statusElement.textContent = status;
 
-forgeElement.classList.remove('is-cold', 'is-warm', 'is-hot');
+    forgeElement.classList.remove('is-cold', 'is-warm', 'is-hot');
 
-if (status === 'Too cold') {
-    forgeElement.classList.add('is-cold');
-    forgeImageElement.src = 'assets/forge-cold.svg';
-    forgeImageElement.alt = 'A stone forge with dark coals and no flames';
-} else if (status === 'Ready to forge') {
-    forgeElement.classList.add('is-warm');
-    forgeImageElement.src = 'assets/forge-ready.svg';
-    forgeImageElement.alt = 'A stone forge with a small orange fire';
-} else if (status === 'Roaring fire') {
-    forgeElement.classList.add('is-hot');
-    forgeImageElement.src = 'assets/forge-roaring.svg';
-    forgeImageElement.alt = 'A stone forge with tall bright flames and sparks';
-}
+    if (status === 'Too cold') {
+        forgeElement.classList.add('is-cold');
+        forgeImageElement.src = 'assets/forge-cold.svg';
+        forgeImageElement.alt = 'A stone forge with dark coals and no flames';
+    } else if (status === 'Ready to forge') {
+        forgeElement.classList.add('is-warm');
+        forgeImageElement.src = 'assets/forge-ready.svg';
+        forgeImageElement.alt = 'A stone forge with a small orange fire';
+    } else {
+        forgeElement.classList.add('is-roaring');
+        forgeImageElement.src = 'assets/forge-roaring.svg';
+        forgeImageElement.alt = 'A stone forge with tall bright flames and sparks';
+    }
 
 }
 // 5. Write resetForge(). Restore the state, message, and display.
@@ -70,6 +74,7 @@ if (status === 'Too cold') {
 function resetForge() {
     heat = 20;
     swordsMade = 0;
+    heatInputElement.value = '20';
     actionMessageElement.textContent = 'Forge reset. Ready to make swords!';
     updateForge();
 }
@@ -98,8 +103,42 @@ function makeSword() {
     updateForge();
 }
 
-// 8. Call resetForge() once to start the game.
+
+// Use the tests in ASSIGNMENT.md to check your work.
+
+// A2 Interactive Blacksmith code
+
+// 8. Connect the add heat button to its click event. Use an event listener.
+addHeatButton.addEventListener('click', function () {
+    const heatToAdd = Number(heatInputElement.value);
+    // check for empty input or non whole number
+
+    if (
+        heatInputElement.value === '' ||
+        !Number.isFinite(heatToAdd) ||
+        !Number.isInteger(heatToAdd) ||
+        heatToAdd <= 0
+    ) {
+        actionMessageElement.textContent = 'Please enter a valid positive number for heat.';
+        return;
+    } else {
+        heatForge(heatToAdd);
+    }
+});
+
+// 9. Connect makeSword() to the "Make Sword" button. Use an event listener.
+makeSwordButton.addEventListener('click', function () {
+    makeSword();
+});
+
+// 10. Connect resetForge() to the "Reset Forge" button. Use an event listener.
+resetForgeButton.addEventListener('click', function () {
+    resetForge();
+});
+
+// 11. Call resetForge() once to start the game.
 
 resetForge();
 
-// Use the tests in ASSIGNMENT.md to check your work.
+
+
