@@ -32,16 +32,19 @@
           <p id="action-message" role="status">Welcome to the forge. Add heat to begin.</p>
         </div>
       </section>
+      <!-- Game controls -->
       <aside aria-label="Game instructions">
         <section class="panel">
-          <h2>Console commands</h2>
-          <p>Write each function in <code>script.js</code>, then try it in the browser console.</p>
-          <dl>
-            <dt><code>heatForge(20)</code></dt><dd>Add 20 heat, up to 100.</dd>
-            <dt><code>makeSword()</code></dt><dd>Use 30 heat to make one sword.</dd>
-            <dt><code>resetForge()</code></dt><dd>Return to 20 heat and zero swords.</dd>
-          </dl>
-          <p class="note">Commands work once you have built them. Refreshing resets the game.</p>
+          <h2>Forge Controls</h2>
+          <!-- Heat controls input and button -->
+           <div class="heat-control">
+            <label for="qty">Heat to add</label>
+            <div class="number-control">
+              <input type="number" id="qty" name="qty" min="0" max="100" value="0">
+              <button type="button" id="add-heat">Add heat</button>
+            </div>
+            <p class="note">Enter a positive whole number. Maximum forge is 100.</p>
+           </div>
         </section>
         <section class="panel">
           <h2>Know your forge</h2>
