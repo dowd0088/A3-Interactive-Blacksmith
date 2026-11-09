@@ -22,6 +22,7 @@ const actionMessageElement = document.getElementById('action-message');
 const heatInputElement = document.getElementById('qty');
 const makeSwordButton = document.getElementById('make-sword');
 const resetForgeButton = document.getElementById('reset-forge');
+const addHeatButton = document.getElementById('add-heat');
 
 // 2. Create the two state variables: heat and swords made.
 
@@ -52,14 +53,14 @@ function updateForge() {
     const status = getForgeStatus(heat);
     statusElement.textContent = status;
 
-    forgeElement.classList.remove('is-cold', 'is-warm', 'is-hot');
+    forgeElement.classList.remove('is-cold', 'is-ready', 'is-roaring');
 
     if (status === 'Too cold') {
         forgeElement.classList.add('is-cold');
         forgeImageElement.src = 'assets/forge-cold.svg';
         forgeImageElement.alt = 'A stone forge with dark coals and no flames';
     } else if (status === 'Ready to forge') {
-        forgeElement.classList.add('is-warm');
+        forgeElement.classList.add('is-ready');
         forgeImageElement.src = 'assets/forge-ready.svg';
         forgeImageElement.alt = 'A stone forge with a small orange fire';
     } else {
@@ -75,7 +76,7 @@ function resetForge() {
     heat = 20;
     swordsMade = 0;
     heatInputElement.value = '20';
-    actionMessageElement.textContent = 'Forge reset. Ready to make swords!';
+    actionMessageElement.textContent = '';
     updateForge();
 }
 

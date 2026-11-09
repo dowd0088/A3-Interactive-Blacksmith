@@ -305,6 +305,7 @@ footer {
     border-radius: .25rem;
 }
 
+
 .number-control input:focus{
     outline: 2px solid #006341;
     outline-offset: 2px;
